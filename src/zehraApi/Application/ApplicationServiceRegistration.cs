@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Application.Services.AuthenticatorService;
 using Application.Services.AuthService;
 using Application.Services.UsersService;
@@ -20,6 +20,9 @@ using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
 using NArchitecture.Core.Security.JWT;
+using Application.Services.Teachers;
+using Application.Services.Surveys;
+using Application.Services.Projects;
 
 namespace Application;
 
@@ -61,6 +64,9 @@ public static class ApplicationServiceRegistration
 
         services.AddSecurityServices<Guid, int, Guid>(tokenOptions);
 
+        services.AddScoped<ITeacherService, TeacherManager>();
+        services.AddScoped<ISurveyService, SurveyManager>();
+        services.AddScoped<IProjectService, ProjectManager>();
         return services;
     }
 

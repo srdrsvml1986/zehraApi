@@ -6,6 +6,9 @@ using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NArchitecture.Core.Security.Constants;
+using Application.Features.Teachers.Constants;
+using Application.Features.Surveys.Constants;
+using Application.Features.Projects.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -97,6 +100,48 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         );
         #endregion
 
+        
+        #region Teachers CRUD
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = TeachersOperationClaims.Admin },
+                new() { Id = ++lastId, Name = TeachersOperationClaims.Read },
+                new() { Id = ++lastId, Name = TeachersOperationClaims.Write },
+                new() { Id = ++lastId, Name = TeachersOperationClaims.Create },
+                new() { Id = ++lastId, Name = TeachersOperationClaims.Update },
+                new() { Id = ++lastId, Name = TeachersOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Surveys CRUD
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = SurveysOperationClaims.Admin },
+                new() { Id = ++lastId, Name = SurveysOperationClaims.Read },
+                new() { Id = ++lastId, Name = SurveysOperationClaims.Write },
+                new() { Id = ++lastId, Name = SurveysOperationClaims.Create },
+                new() { Id = ++lastId, Name = SurveysOperationClaims.Update },
+                new() { Id = ++lastId, Name = SurveysOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Projects CRUD
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = ProjectsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = ProjectsOperationClaims.Read },
+                new() { Id = ++lastId, Name = ProjectsOperationClaims.Write },
+                new() { Id = ++lastId, Name = ProjectsOperationClaims.Create },
+                new() { Id = ++lastId, Name = ProjectsOperationClaims.Update },
+                new() { Id = ++lastId, Name = ProjectsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
         return featureOperationClaims;
     }
 #pragma warning restore S1854 // Unused assignments should be removed

@@ -17,22 +17,24 @@ public class UpdateUserCommand : IRequest<UpdatedUserResponse>, ISecuredRequest
     public string LastName { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
-
+    public string? Photo { get; set; }
     public UpdateUserCommand()
     {
         FirstName = string.Empty;
         LastName = string.Empty;
         Email = string.Empty;
         Password = string.Empty;
+        Photo = string.Empty;
     }
 
-    public UpdateUserCommand(Guid id, string firstName, string lastName, string email, string password)
+    public UpdateUserCommand(Guid id, string firstName, string lastName, string email, string password,string? photo)
     {
         Id = id;
         FirstName = firstName;
         LastName = lastName;
         Email = email;
         Password = password;
+        Photo = photo;
     }
 
     public string[] Roles => new[] { Admin, Write, UsersOperationClaims.Update };
